@@ -1,0 +1,43 @@
+<html>
+
+<head>
+
+  <title>Show New Users Page</title>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link rel="stylesheet" href="src/css/style.css">
+
+</head>
+
+<body>
+
+  <%- include partials/navbar.ejs %>
+
+  <table class="table">
+
+    <thead>
+      <tr>
+        <td>First name:</td>
+        <td>Last name:</td>
+        <td>Email:</td>
+      </tr>
+    </thead>
+
+    <tbody>
+        <tr>
+        <td>
+          <%= obj.firstname %>
+        </td>
+        <td>
+          <%= obj.lastname %>
+        </td>
+        <td>
+          <%= obj.email %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</body>
+
+</html>

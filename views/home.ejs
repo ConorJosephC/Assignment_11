@@ -1,0 +1,49 @@
+<html>
+
+<head>
+
+  <title>All User Content Page</title>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link rel="stylesheet" href="src/css/style.css">
+
+</head>
+
+<body>
+
+  <%- include partials/navbar.ejs %>
+
+  <h1>All Current Users</h1>
+
+  <div class="table">
+
+    <table>
+      <thead>
+        <tr>
+          <td>First Name</td>
+          <td>Last Name</td>
+          <td>Email Address</td>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% for(var i=0; i < sorted.length; i++) { %>
+        <tr>
+          <td>
+            <%= sorted[i].firstname %>
+          </td>
+          <td>
+            <%= sorted[i].lastname %>
+          </td>
+          <td>
+            <%= sorted[i].email %>
+          </td>
+        </tr>
+        <% } %>
+      </tbody>
+    </table>
+
+  </div>
+</body>
+
+</html>
