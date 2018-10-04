@@ -37,23 +37,27 @@
       <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
           <script type="text/javascript">
 
-            $(document).ready(function() {
-              $("#firstname").keyup((event) => {
-                  let firstname = $('#firstname').val().toLowerCase();
-                  if (firstname.length != 0) {
+          $(document).ready(function() {
+            var startcounting;
+            $("#firstname").keyup((event) => {
+              clearTimeout(startcounting);
+              startcounting = setTimeout(function() {
+                let firstname = $('#firstname').val().toLowerCase();
+                if (firstname.length != 0) {
 
-                    $.post('/search', {
-                      firstname: firstname
-                    }, function(response) {
-                      $('#listofnames').empty();
-                      for (const el in response) {
-                        $('#listofnames').append(`<li>${response[el]}</li>`);
-                      }
-                    });
-                  } else {
+                  $.post('/search', {
+                    firstname: firstname
+                  }, function(response) {
                     $('#listofnames').empty();
-                  }
-              });
+                    for (const el in response) {
+                      $('#listofnames').append(`<li>${response[el]}</li>`);
+                    }
+                  });
+                } else {
+                  $('#listofnames').empty();
+                }
+              }, 300);
+            }); 
 
               $("#lastname").keyup((event) => {
                 let lastname = $('#lastname').val().toLowerCase();

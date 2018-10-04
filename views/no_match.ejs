@@ -41,22 +41,26 @@
     <script type="text/javascript">
 
     $(document).ready(function() {
-    $("#firstname").keyup((event) => {
-        let firstname = $('#firstname').val().toLowerCase();
-        if (firstname.length != 0) {
+      var startcounting;
+      $("#firstname").keyup((event) => {
+        clearTimeout(startcounting);
+        startcounting = setTimeout(function() {
+          let firstname = $('#firstname').val().toLowerCase();
+          if (firstname.length != 0) {
 
-          $.post('/search', {
-            firstname: firstname
-          }, function(response) {
+            $.post('/search', {
+              firstname: firstname
+            }, function(response) {
+              $('#listofnames').empty();
+              for (const el in response) {
+                $('#listofnames').append(`<li>${response[el]}</li>`);
+              }
+            });
+          } else {
             $('#listofnames').empty();
-            for (const el in response) {
-              $('#listofnames').append(`<li>${response[el]}</li>`);
-            }
-          });
-        } else {
-          $('#listofnames').empty();
-        }
-    });
+          }
+        }, 300);
+      });
 
     $("#lastname").keyup((event) => {
       let lastname = $('#lastname').val().toLowerCase();
