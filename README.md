@@ -1,10 +1,20 @@
-# Assignment_11
+# Assignment_11_User_Information_Application
 
-List of changes since the  first submission:
+## About the app
 
-- All unnecessary opening <form> tags have been removed.
-- Links are placed inside the <head> tags.
-- Scripts are located above the </body> tag and are in the right order.
-- No more zipped files.
-- After part 1 of the assignment (autocomplete) was uploaded, a new branch was created for part 2 (bandwidth optimization), the new files were uploaded, pull request made and the branch was successfully merged with the original.
-- Autocomplete has been added to the 'no_match' page, so if your search for a user is unsuccessful after hitting the submit button, the search bar in the new page will also autocomplete.
+A Node.js application that shows the basics of a user management system. Using a JSON file called 'users.json', it is possible to:
+- search for existing users
+- add new users to your users file
+
+Everytime a user enters a key, it will make an AJAX call that populates the search results, and these requests happen at most once every 300 milliseconds
+
+
+## Dependencies and Quick setup guide
+
+To get this application working you will need to clone or download the repository and run the following in the command line:
+
+    npm install express ejs
+
+otherwise download the package.json and in the command line run:
+
+    npm i

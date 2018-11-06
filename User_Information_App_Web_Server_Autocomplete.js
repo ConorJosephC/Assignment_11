@@ -53,6 +53,7 @@
 
   app.post('/search', (req, res) => {
 
+    console.log(req.body.firstname);
     fs.readFile('resources/users.json', (err, data) => {
       if (err) {
         throw err;
@@ -82,9 +83,7 @@ app.post('/matched', (req, res) => {
     for (let i = 0; i < myUsers.length; i++) {
       if (req.body.firstname.toLowerCase() == myUsers[i].firstname.toLowerCase() || req.body.lastname.toLowerCase() == myUsers[i].lastname.toLowerCase()) {
         matchedUser = myUsers[i];
-        res.render('matched', {
-          match: matchedUser
-        });
+        res.render('matched', {match: matchedUser});
       }
     }
     if (matchedUser === null) {
@@ -125,6 +124,6 @@ app.post('/matched', (req, res) => {
 
   //////////////  //////////////  //////////////  //////////////  //////////////
 
-  app.listen(3006, () => {
-    console.log('App is running on port 3006');
+  app.listen(3011, () => {
+    console.log('App is running on port 3011');
   })

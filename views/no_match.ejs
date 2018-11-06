@@ -1,11 +1,11 @@
+<!DOCTYPE html>
 <html>
 
 <head>
 
   <title>No Match Page</title>
 
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-  <link rel="stylesheet" href="src/css/style.css">
+  <%- include partials/head.ejs %>
 
 </head>
 
@@ -13,10 +13,16 @@
 
   <%- include partials/navbar.ejs %>
 
-  <h1>No match found, please try again.</h1>
+  <br>
+  <br>
+  <h1> No match found, please try again. </h1>
+  <br>
+  <br>
 
   <form action="/matched" method="post">
-  <!-- <form action="/no_match" method="post"> -->
+    <form action="/no_match" method="post">
+
+      <form>
 
       <div class="form-group">
         <label for="exampleInputFirstName">First name:</label><br>
@@ -34,56 +40,8 @@
 
     </form>
 
-    <ol id="listofnames"></ol>
     </form>
-
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script type="text/javascript">
-
-    $(document).ready(function() {
-      var startcounting;
-      $("#firstname").keyup((event) => {
-        clearTimeout(startcounting);
-        startcounting = setTimeout(function() {
-          let firstname = $('#firstname').val().toLowerCase();
-          if (firstname.length != 0) {
-
-            $.post('/search', {
-              firstname: firstname
-            }, function(response) {
-              $('#listofnames').empty();
-              for (const el in response) {
-                $('#listofnames').append(`<li>${response[el]}</li>`);
-              }
-            });
-          } else {
-            $('#listofnames').empty();
-          }
-        }, 300);
-      });
-
-    $("#lastname").keyup((event) => {
-      let lastname = $('#lastname').val().toLowerCase();
-      if (lastname.length != 0) {
-
-        $.post('/search', {
-          lastname: lastname
-        }, function(response) {
-          $('#listofnames').empty();
-          for (const el in response) {
-            $('#listofnames').append(`<li>${response[el]}</li>`);
-          }
-        });
-      } else {
-        $('#listofnames').empty();
-      }
-    });
-
-    });
-    </script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  </form>
 
 </body>
 
